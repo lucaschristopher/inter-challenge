@@ -14,7 +14,8 @@ const val DEFAULT_ERROR = "Ocorreu um erro, por favor, tente mais tarde."
 // Screens
 const val HOME_SCREEN = "home"
 const val DETAIL_SCREEN = "detail"
-const val ARG_MATCH = "match"
+const val USER_ARG = "userArg"
+const val REPO_ARG = "repoArg"
 
 // Utils
 const val EMPTY_STRING = ""
@@ -33,5 +34,6 @@ const val TITLE_MAX_LINE: Int = 1
 // Search
 const val QUERY_PARAM = "language:Java"
 const val SORT_PARAM = "stars"
+const val ALL_FLAG = "all"
 
 val MAX_CACHE_CONTROL_TIME = ONE.hours.inWholeSeconds.toInt()

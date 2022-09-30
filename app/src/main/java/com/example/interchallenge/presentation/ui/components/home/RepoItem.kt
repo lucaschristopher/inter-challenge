@@ -1,32 +1,25 @@
 package com.example.interchallenge.presentation.ui.components.home
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Divider
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import coil.compose.AsyncImagePainter
-import coil.compose.SubcomposeAsyncImage
-import coil.compose.SubcomposeAsyncImageContent
-import com.example.interchallenge.R
-import com.example.interchallenge.core.constants.DESCRIPTION_MAX_LINE
-import com.example.interchallenge.core.constants.TITLE_MAX_LINE
 import com.example.interchallenge.core.constants.util.preview.repositoryUiModel
 import com.example.interchallenge.presentation.model.RepositoryUiModel
+import com.example.interchallenge.presentation.navigation.Route
+import com.example.interchallenge.presentation.ui.components.core.Description
+import com.example.interchallenge.presentation.ui.components.core.LineDivider
+import com.example.interchallenge.presentation.ui.components.core.Title
 import com.example.interchallenge.presentation.ui.theme.*
 
 @Composable
@@ -34,11 +27,18 @@ fun RepoItem(
     repository: RepositoryUiModel,
     navHostController: NavHostController
 ) {
-    // All content
     ConstraintLayout(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable {
+                navHostController.navigate(
+                    Route.Detail.createRoute(
+                        userArg = repository.owner.login,
+                        repoArg = repository.name
+                    )
+                )
+            }
     ) {
-
         val (content, divider) = createRefs()
 
         ConstraintLayout(
@@ -50,44 +50,42 @@ fun RepoItem(
                     bottom.linkTo(parent.bottom)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
-                },
+                }
         ) {
+            val (title, description, columnUser, rowInfo) = createRefs()
 
-            val (title, description, columnUser) = createRefs()
-
-            // Repo title
-            Text(
+            Title(
+                title = repository.name,
                 modifier = Modifier
                     .fillMaxWidth(fraction = f05)
                     .padding(bottom = dp12)
                     .constrainAs(title) {
                         start.linkTo(parent.start)
                         top.linkTo(parent.top)
-                    },
-                maxLines = TITLE_MAX_LINE,
-                overflow = TextOverflow.Ellipsis,
-                text = repository.name,
-                color = DarkBlue,
-                fontSize = sp18
+                    }
             )
 
-            // Repo description
-            Text(
+            Description(
+                description = repository.description,
                 modifier = Modifier
                     .fillMaxWidth(fraction = f055)
                     .constrainAs(description) {
                         start.linkTo(parent.start)
                         top.linkTo(title.bottom)
-                    },
-                maxLines = DESCRIPTION_MAX_LINE,
-                overflow = TextOverflow.Ellipsis,
-                text = repository.description,
-                color = Gray,
-                fontSize = sp12,
-                fontWeight = FontWeight.Bold
+                    }
             )
 
-            // User data
+            RowInfo(
+                forks = repository.forks.toString(),
+                stargazers = repository.stargazers.toString(),
+                modifier = Modifier
+                    .padding(top = dp12)
+                    .constrainAs(rowInfo) {
+                        start.linkTo(parent.start)
+                        top.linkTo(description.bottom)
+                    }
+            )
+
             Column(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -97,27 +95,32 @@ fun RepoItem(
                     .constrainAs(columnUser) {
                         top.linkTo(parent.top)
                         end.linkTo(parent.end)
+                        bottom.linkTo(parent.bottom)
                     }
             ) {
-                // Avatar URL
-                AvatarImage(repository)
-                // Login user
-                LoginUsername(repository)
+                AvatarImage(
+                    modifier = Modifier
+                        .size(dp48)
+                        .clip(CircleShape),
+                    avatarUrl = repository.owner.avatarUrl
+                )
+                LoginUsername(
+                    modifier = Modifier.padding(top = dp10, end = dp10),
+                    login = repository.owner.login,
+                    fontSize = sp12,
+                    fontWeight = FontWeight.Normal
+                )
             }
         }
-        // DIVIDER
-        Divider(
-            color = Color.Gray.copy(af02),
-            thickness = dp1,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = dp20, bottom = dp4, start = dp16)
-                .constrainAs(divider) {
-                    bottom.linkTo(parent.bottom)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }
-        )
+
+        LineDivider(modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = dp20, bottom = dp4, start = dp16)
+            .constrainAs(divider) {
+                bottom.linkTo(parent.bottom)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+            })
     }
 }
 

@@ -46,6 +46,9 @@ val sp32 = 32.sp
 const val af02 = 0.2f
 
 // Fractions
+const val f01 = 0.1f
+const val f015 = 0.15f
+const val f02 = 0.2f
 const val f03 = 0.3f
 const val f05 = 0.5f
 const val f055 = 0.55f

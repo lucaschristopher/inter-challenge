@@ -4,8 +4,14 @@
     <string name="home_title">GitHub JavaPop</string>
     <string name="detail_title">%s</string>
 
-    <string name="avatar_image_description">avatar image</string>
+    <!-- Label -->
     <string name="default_team_label">Team ?</string>
+
+    <!-- Description -->
+    <string name="avatar_image_description">avatar image</string>
+    <string name="star_icon_description">star icon</string>
+    <string name="fork_icon_description">fork icon</string>
+    <string name="back_button_description">Back button</string>
 
     <!-- Error -->
     <string name="error_toast_message">Ops! Erro ao buscar novos repositórios…</string>

@@ -7,4 +7,5 @@ class PullRequestUiModel(
     val title: String,
     val body: String,
     val updatedAt: String,
+    val user: OwnerUiModel
 )

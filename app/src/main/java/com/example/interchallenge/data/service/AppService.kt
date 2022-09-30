@@ -19,6 +19,7 @@ interface AppService {
     @GET("repos/{owner}/{repo}/pulls")
     suspend fun getPullRequestsFromRepo(
         @Path("owner") owner: String,
-        @Path("repo") repo: String
+        @Path("repo") repo: String,
+        @Query("state") state: String
     ): List<PullRequestResponse>
 }

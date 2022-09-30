@@ -9,6 +9,7 @@ class PullRequest(
     val title: String,
     val body: String,
     val updatedAt: String,
+    val user: Owner
 )
 
 fun PullRequest.toUiModel() = PullRequestUiModel(
@@ -17,5 +18,6 @@ fun PullRequest.toUiModel() = PullRequestUiModel(
     state = this.state,
     title = this.title,
     body = this.body,
-    updatedAt = this.updatedAt
+    updatedAt = this.updatedAt,
+    user = this.user.toUiModel()
 )
