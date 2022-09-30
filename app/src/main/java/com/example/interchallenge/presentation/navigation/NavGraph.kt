@@ -1,6 +1,7 @@
 package com.example.interchallenge.presentation.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -14,12 +15,16 @@ import com.example.interchallenge.presentation.ui.fragments.home.HomeFragment
 
 @Composable
 fun NavGraph(navHostController: NavHostController) {
+    val actions = remember(navHostController) { Actions(navHostController) }
+
     NavHost(
         navController = navHostController,
         startDestination = Route.Home.route
     ) {
         composable(route = Route.Home.route) {
-            HomeFragment(navHostController = navHostController)
+            HomeFragment(
+                openPullRequestDetail = actions.openPullRequestDetail
+            )
         }
         composable(
             route = Route.Detail.route,
@@ -32,7 +37,7 @@ fun NavGraph(navHostController: NavHostController) {
             val repoArg = backStackEntry.arguments?.getString(REPO_ARG) ?: EMPTY_STRING
 
             DetailFragment(
-                navHostController = navHostController,
+                navigateBack = actions.navigateBack,
                 user = userArg,
                 repo = repoArg
             )

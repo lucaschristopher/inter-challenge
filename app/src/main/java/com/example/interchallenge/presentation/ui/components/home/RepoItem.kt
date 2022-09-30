@@ -12,11 +12,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.example.interchallenge.core.util.preview.repositoryUiModel
 import com.example.interchallenge.presentation.model.RepositoryUiModel
-import com.example.interchallenge.presentation.navigation.Route
 import com.example.interchallenge.presentation.ui.components.core.Description
 import com.example.interchallenge.presentation.ui.components.core.LineDivider
 import com.example.interchallenge.presentation.ui.components.core.Title
@@ -25,17 +22,15 @@ import com.example.interchallenge.presentation.ui.theme.*
 @Composable
 fun RepoItem(
     repository: RepositoryUiModel,
-    navHostController: NavHostController
+    openPullRequestDetail: (String, String) -> Unit
 ) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
-                navHostController.navigate(
-                    Route.Detail.createRoute(
-                        userArg = repository.owner.login,
-                        repoArg = repository.name
-                    )
+                openPullRequestDetail(
+                    repository.owner.login,
+                    repository.name
                 )
             }
     ) {
@@ -130,7 +125,7 @@ fun RepoItemPreview() {
     InterChallengeTheme {
         RepoItem(
             repository = repositoryUiModel,
-            navHostController = rememberNavController()
+            openPullRequestDetail = { _, _ -> }
         )
     }
 }

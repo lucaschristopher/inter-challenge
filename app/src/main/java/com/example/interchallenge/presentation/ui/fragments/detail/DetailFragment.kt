@@ -6,7 +6,6 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
 import com.example.interchallenge.presentation.state.ViewState
 import com.example.interchallenge.presentation.ui.components.core.ErrorDialog
 import com.example.interchallenge.presentation.ui.components.core.LoadingComponent
@@ -17,9 +16,9 @@ import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun DetailFragment(
-    navHostController: NavHostController,
+    navigateBack: () -> Unit,
     user: String,
-    repo: String
+    repo: String,
 ) {
 
     val viewModel = getViewModel<DetailViewModel>()
@@ -34,7 +33,12 @@ fun DetailFragment(
         modifier = Modifier
             .fillMaxSize()
             .background(color = WhiteAccent),
-        topBar = { DetailTopBar(navHostController = navHostController, repoName = repo) }
+        topBar = {
+            DetailTopBar(
+                navigateBack = navigateBack,
+                repoName = repo
+            )
+        }
     ) {
         when (val response = viewModel.pullRequests.collectAsState().value) {
             is ViewState.Loading -> LoadingComponent()

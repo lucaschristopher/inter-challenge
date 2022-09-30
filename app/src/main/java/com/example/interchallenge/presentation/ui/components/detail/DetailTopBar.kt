@@ -9,14 +9,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.navigation.NavHostController
 import com.example.interchallenge.R
 import com.example.interchallenge.presentation.ui.theme.DeepBlack
 import com.example.interchallenge.presentation.ui.theme.dp0
 
 @Composable
 fun DetailTopBar(
-    navHostController: NavHostController,
+    navigateBack: () -> Unit,
     repoName: String
 ) {
     TopAppBar(
@@ -31,18 +30,14 @@ fun DetailTopBar(
                 style = MaterialTheme.typography.h6
             )
         },
-        navigationIcon = if (navHostController.previousBackStackEntry != null) {
-            {
-                IconButton(onClick = { navHostController.navigateUp() }) {
-                    Icon(
-                        tint = Color.White,
-                        imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = stringResource(R.string.back_button_description)
-                    )
-                }
+        navigationIcon = {
+            IconButton(onClick = { navigateBack.invoke() }) {
+                Icon(
+                    tint = Color.White,
+                    imageVector = Icons.Filled.ArrowBack,
+                    contentDescription = stringResource(R.string.back_button_description)
+                )
             }
-        } else {
-            null
         }
     )
 }

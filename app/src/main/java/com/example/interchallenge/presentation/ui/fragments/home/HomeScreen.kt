@@ -5,7 +5,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.navigation.NavHostController
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
@@ -18,8 +17,8 @@ import com.example.interchallenge.presentation.ui.components.home.RepoItem
 
 @Composable
 fun HomeScreen(
-    navHostController: NavHostController,
-    javaRepositories: LazyPagingItems<RepositoryUiModel>
+    javaRepositories: LazyPagingItems<RepositoryUiModel>,
+    openPullRequestDetail: (String, String) -> Unit
 ) {
     val context = LocalContext.current
 
@@ -31,7 +30,7 @@ fun HomeScreen(
             repo?.let {
                 RepoItem(
                     repository = repo,
-                    navHostController = navHostController
+                    openPullRequestDetail = openPullRequestDetail
                 )
             }
         }
