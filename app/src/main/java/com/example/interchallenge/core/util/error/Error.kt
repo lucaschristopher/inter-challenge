@@ -1,4 +1,4 @@
-package com.example.interchallenge.core.constants.util.error
+package com.example.interchallenge.core.util.error
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch

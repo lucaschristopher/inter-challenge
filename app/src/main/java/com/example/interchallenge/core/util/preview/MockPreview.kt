@@ -1,4 +1,4 @@
-package com.example.interchallenge.core.constants.util.preview
+package com.example.interchallenge.core.util.preview
 
 import com.example.interchallenge.core.constants.DEFAULT_ID
 import com.example.interchallenge.core.constants.EMPTY_QUANTITY

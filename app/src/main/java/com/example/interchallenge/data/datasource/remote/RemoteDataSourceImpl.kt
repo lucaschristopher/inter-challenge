@@ -5,7 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.interchallenge.core.constants.ALL_FLAG
 import com.example.interchallenge.core.constants.PAGE_SIZE
-import com.example.interchallenge.core.constants.util.error.mapToCustomError
+import com.example.interchallenge.core.util.error.mapToCustomError
 import com.example.interchallenge.data.model.PullRequestResponse
 import com.example.interchallenge.data.paging.AppPagingSource
 import com.example.interchallenge.data.service.AppService

@@ -4,7 +4,6 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import okhttp3.Cache
-import java.io.File
 
 object NetworkProvider {
 
@@ -23,8 +22,8 @@ object NetworkProvider {
     val cache: Cache? by lazy {
         if (context != null) {
             Cache(
-                directory = File(context.cacheDir, ""),
-                maxSize = 100L * 1024L * 1024L // 100 MiB
+                directory = context.cacheDir,
+                maxSize = 100L * 1024L * 1024L // 100 MB
             )
         } else {
             null

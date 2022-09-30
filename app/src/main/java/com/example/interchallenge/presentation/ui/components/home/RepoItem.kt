@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.interchallenge.core.constants.util.preview.repositoryUiModel
+import com.example.interchallenge.core.util.preview.repositoryUiModel
 import com.example.interchallenge.presentation.model.RepositoryUiModel
 import com.example.interchallenge.presentation.navigation.Route
 import com.example.interchallenge.presentation.ui.components.core.Description

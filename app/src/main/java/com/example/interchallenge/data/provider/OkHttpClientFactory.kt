@@ -2,7 +2,8 @@ package com.example.interchallenge.data.provider
 
 import com.example.interchallenge.core.constants.DEFAULT_TIME_VALUE
 import com.example.interchallenge.data.provider.NetworkProvider.cache
-import com.example.interchallenge.data.provider.interceptor.RequestInterceptor
+import com.example.interchallenge.data.provider.interceptor.OfflineInterceptor
+import com.example.interchallenge.data.provider.interceptor.OnlineInterceptor
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
@@ -12,7 +13,8 @@ object OkHttpClientFactory {
         return OkHttpClient.Builder()
             .setupTimeout()
             .setupCache()
-            .addInterceptor(RequestInterceptor())
+            .addInterceptor(OfflineInterceptor())
+            .addNetworkInterceptor(OnlineInterceptor())
             .build()
     }
 
