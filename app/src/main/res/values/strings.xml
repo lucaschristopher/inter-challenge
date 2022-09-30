@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Inter Challenge</string>
+
+    <string name="home_title">GitHub JavaPop</string>
+    <string name="detail_title">%s</string>
+
+    <string name="avatar_image_description">avatar image</string>
+    <string name="default_team_label">Team ?</string>
+
+    <!-- Error -->
+    <string name="error_toast_message">Ops! Erro ao buscar novos repositórios…</string>
+    <string name="error_dialog_default_description">Ocorreu um problema ao buscar as partidas. Por favor, tente novamente.</string>
+    <string name="error_dialog_title">Ocorreu um erro</string>
+
+    <!-- Default -->
+    <string name="reload_label">Recarregar</string>
+</resources>
