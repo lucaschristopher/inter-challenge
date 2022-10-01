@@ -6,9 +6,9 @@ import retrofit2.HttpException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
-sealed class Error : Exception() {
-    object NoConnectionError : Error()
-    object ServerError : Error()
+sealed class Fail : Exception() {
+    object NoConnectionError : Fail()
+    object ServerError : Fail()
 }
 
 fun <T> Flow<T>.mapToCustomError(): Flow<T> = catch {
@@ -16,7 +16,7 @@ fun <T> Flow<T>.mapToCustomError(): Flow<T> = catch {
 }
 
 private fun Throwable.getGenericOrDefaultThrowable() = when (this) {
-    is SocketTimeoutException, is UnknownHostException -> Error.NoConnectionError
-    is HttpException -> Error.ServerError
+    is SocketTimeoutException, is UnknownHostException -> Fail.NoConnectionError
+    is HttpException -> Fail.ServerError
     else -> this
 }

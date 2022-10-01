@@ -2,7 +2,7 @@ package com.example.interchallenge.domain.model
 
 import com.example.interchallenge.presentation.model.OwnerUiModel
 
-class Owner(
+data class Owner(
     val id: Long,
     val login: String,
     val avatarUrl: String

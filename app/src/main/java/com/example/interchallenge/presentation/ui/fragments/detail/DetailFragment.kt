@@ -7,9 +7,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import com.example.interchallenge.presentation.state.ViewState
+import com.example.interchallenge.presentation.ui.components.core.AppTopBar
 import com.example.interchallenge.presentation.ui.components.core.ErrorDialog
 import com.example.interchallenge.presentation.ui.components.core.LoadingComponent
-import com.example.interchallenge.presentation.ui.components.detail.DetailTopBar
 import com.example.interchallenge.presentation.ui.theme.WhiteAccent
 import com.example.interchallenge.presentation.viewmodel.DetailViewModel
 import org.koin.androidx.compose.getViewModel
@@ -34,9 +34,10 @@ fun DetailFragment(
             .fillMaxSize()
             .background(color = WhiteAccent),
         topBar = {
-            DetailTopBar(
+            AppTopBar(
+                title = repo,
+                showBackButton = true,
                 navigateBack = navigateBack,
-                repoName = repo
             )
         }
     ) {

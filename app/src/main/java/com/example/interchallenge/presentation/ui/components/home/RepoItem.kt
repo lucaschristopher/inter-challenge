@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.example.interchallenge.core.util.preview.repositoryUiModel
+import com.example.interchallenge.core.util.preview.repositoryUiModelMockPreview
 import com.example.interchallenge.presentation.model.RepositoryUiModel
 import com.example.interchallenge.presentation.ui.components.core.Description
 import com.example.interchallenge.presentation.ui.components.core.LineDivider
@@ -124,7 +124,7 @@ fun RepoItem(
 fun RepoItemPreview() {
     InterChallengeTheme {
         RepoItem(
-            repository = repositoryUiModel,
+            repository = repositoryUiModelMockPreview,
             openPullRequestDetail = { _, _ -> }
         )
     }

@@ -1,7 +1,5 @@
 package com.example.interchallenge.core.constants
 
-import kotlin.time.Duration.Companion.hours
-
 // Dispatchers
 const val DEFAULT_SCOPE = "DefaultScope"
 const val MAIN_DISPATCHER = "MainDispatcher"
@@ -10,6 +8,7 @@ const val DEFAULT_DISPATCHER = "DefaultDispatcher"
 
 // Messages
 const val DEFAULT_ERROR = "Ocorreu um erro, por favor, tente mais tarde."
+const val TEST_ERROR_MESSAGE = "Viiiishh..."
 
 // Screens
 const val HOME_SCREEN = "home"
@@ -30,10 +29,13 @@ const val DEFAULT_TIME_VALUE: Long = 60
 const val FIVE_VALUE: Long = 5
 const val DESCRIPTION_MAX_LINE: Int = 3
 const val TITLE_MAX_LINE: Int = 1
+const val TEST_NEXT_PAGE = 2
 
 // Search
 const val QUERY_PARAM = "language:Java"
 const val SORT_PARAM = "stars"
 const val ALL_FLAG = "all"
 
-val MAX_CACHE_CONTROL_TIME = ONE.hours.inWholeSeconds.toInt()
+// Test tag
+const val LOADING_COMPONENT_TAG = "LOADING_COMPONENT_TAG"
+const val LOADING_ITEM_TAG = "LOADING_ITEM_TAG"

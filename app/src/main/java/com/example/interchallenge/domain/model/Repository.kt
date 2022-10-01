@@ -2,7 +2,7 @@ package com.example.interchallenge.domain.model
 
 import com.example.interchallenge.presentation.model.RepositoryUiModel
 
-class Repository(
+data class Repository(
     val id: Long,
     val name: String,
     val description: String,

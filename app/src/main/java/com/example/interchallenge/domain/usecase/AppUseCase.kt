@@ -1,6 +1,6 @@
 package com.example.interchallenge.domain.usecase
 
-class AppUseCase(
+data class AppUseCase(
     val getJavaRepositoriesUseCase: GetJavaRepositoriesUseCase,
     val getPullRequestsUseCase: GetPullRequestsUseCase
 )

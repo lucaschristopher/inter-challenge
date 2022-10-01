@@ -6,7 +6,9 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.interchallenge.core.constants.LOADING_COMPONENT_TAG
 import com.example.interchallenge.presentation.ui.theme.GoldYellow
 import com.example.interchallenge.presentation.ui.theme.InterChallengeTheme
 
@@ -16,7 +18,10 @@ fun LoadingComponent() {
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        CircularProgressIndicator(color = GoldYellow)
+        CircularProgressIndicator(
+            modifier = Modifier.testTag(LOADING_COMPONENT_TAG),
+            color = GoldYellow
+        )
     }
 }
 

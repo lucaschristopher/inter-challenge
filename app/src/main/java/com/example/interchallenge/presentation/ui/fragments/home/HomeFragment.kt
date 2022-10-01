@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.example.interchallenge.presentation.ui.components.home.HomeTopBar
+import com.example.interchallenge.R
+import com.example.interchallenge.presentation.ui.components.core.AppTopBar
 import com.example.interchallenge.presentation.ui.theme.WhiteAccent
 import com.example.interchallenge.presentation.viewmodel.AppViewModel
 import org.koin.androidx.compose.getViewModel
@@ -23,7 +25,13 @@ fun HomeFragment(
         modifier = Modifier
             .fillMaxSize()
             .background(color = WhiteAccent),
-        topBar = { HomeTopBar() },
+        topBar = {
+            AppTopBar(
+                title = stringResource(id = R.string.home_title),
+                showBackButton = false,
+                navigateBack = { }
+            )
+        },
         content = {
             HomeScreen(
                 javaRepositories = javaRepositories,
