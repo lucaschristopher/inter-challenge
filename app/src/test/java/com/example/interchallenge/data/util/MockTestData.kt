@@ -46,10 +46,6 @@ val repositoryResponseMock = RepositoryResponse(
     owner = ownerResponseMock
 )
 
-val searchResponseMock = SearchResponse(
-    items = listOf(repositoryResponseMock, repositoryResponseMock)
-)
-
 val pullRequestResponseMock = PullRequestResponse(
     id = DEFAULT_ID,
     url = EMPTY_STRING,

@@ -9,7 +9,7 @@ import com.example.interchallenge.data.model.SearchResponse
 import com.example.interchallenge.data.model.toDomainModel
 import com.example.interchallenge.data.service.AppService
 import com.example.interchallenge.data.util.pullRequestResponseMock
-import com.example.interchallenge.data.util.searchResponseMock
+import com.example.interchallenge.data.util.repositoryResponseMock
 import io.mockk.MockKAnnotations
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -19,6 +19,10 @@ import org.junit.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class AppPagingSourceTest {
+
+    private val searchResponseMock = SearchResponse(
+        items = listOf(repositoryResponseMock, repositoryResponseMock)
+    )
 
     private val fakeService = object : AppService {
         override suspend fun getJavaRepositories(
@@ -60,7 +64,7 @@ class AppPagingSourceTest {
             pagingSource.load(
                 PagingSource.LoadParams.Refresh(
                     key = null,
-                    loadSize = response.size,
+                    loadSize = searchResponseMock.items.size,
                     placeholdersEnabled = false
                 )
             )

@@ -24,25 +24,6 @@ import com.example.interchallenge.presentation.ui.theme.*
 
 @Composable
 fun DetailScreen(data: List<PullRequestUiModel>) {
-//    TODO: Remove?
-//    Box(
-//        contentAlignment = Alignment.CenterStart,
-//        modifier = Modifier
-//            .background(GrayAccent)
-//            .fillMaxWidth()
-//            .fillMaxHeight(f01)
-//    ) {
-//        Text(
-//            text = "16 opened",
-//            color = GoldYellow,
-//            fontSize = sp16,
-//            fontWeight = FontWeight.Bold,
-//            textAlign = TextAlign.Center,
-//            modifier = Modifier.padding(dp16)
-//        )
-//    }
-
-    // LIST OF PR's
     LazyColumn {
         items(items = data) { item ->
             CardContent(item)

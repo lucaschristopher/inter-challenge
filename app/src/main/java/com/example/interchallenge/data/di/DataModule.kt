@@ -27,15 +27,15 @@ val apiModule = module {
 }
 
 val networkModule = module {
-    single {
+    factory {
         OkHttpClientFactory.build()
     }
 
-    single<Converter.Factory> {
+    factory<Converter.Factory> {
         GsonConverterFactory.create(GsonBuilder().create())
     }
 
-    single {
+    factory {
         RetrofitFactory.build(url = BuildConfig.BASE_URL, client = get(), factory = get())
     }
 }
