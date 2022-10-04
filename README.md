@@ -23,6 +23,7 @@ Foi adotada a **[Arquitetura MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93v
 - **[Jetpack Compose:](https://developer.android.com/jetpack/compose)** o Jetpack Compose é um kit de ferramentas moderno do Android para criar IUs nativas. Ele simplifica e acelera o desenvolvimento da IU no Android, tornando o código mais simples e fácil de manter (evita codificação de classes e códigos *boilerplates*). Trabalha de forma declarativa, o que acelera o desenvolvimento.
 - **[Paging:](https://developer.android.com/jetpack/compose)** a biblioteca Paging facilita o carregamento gradual e tranquilo de dados na RecyclerView do seu app.  
 - **[Mockk:](https://mockk.io/)** uma biblioteca para simulação escrito e feito para o Kotlin + JUnit 4 (o JUnit 4 expõe uma API baseada em regras para permitir alguma automação após o ciclo de vida do teste).
+- **[Turbine:](https://github.com/cashapp/turbine)** uma pequena e poderosa biblioteca de testes para kotlinx.coroutines Flow.
 
 Por fim, falando um pouco sobre o **MVVM (Model-View-ViewModel)**, temos basicamente a divisão em:
 
